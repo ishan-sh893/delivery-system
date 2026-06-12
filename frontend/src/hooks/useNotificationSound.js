@@ -15,7 +15,7 @@ const useNotificationSound = () => {
 
   // Create Howl instances - only keeping success sound as requested
   const [sounds] = useState({
-    success: new Howl({ src: ['/sounds/success.ogg'], html5: true, volume }),
+    success: new Howl({ src: ['/sounds/success.ogg'], volume }),
   });
 
   // Update volume for all sounds when it changes

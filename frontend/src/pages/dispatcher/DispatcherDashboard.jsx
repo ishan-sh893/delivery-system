@@ -707,9 +707,6 @@ const DispatcherDashboard = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [pendingPickups, setPendingPickups] = useState([]);
-  const { playNotification } = useNotificationSound();
-  const prevPickupsRef = useRef([]);
-  const isInitialLoadRef = useRef(true);
 
   useEffect(() => {
     const fetchNotifications = async () => {
@@ -717,16 +714,8 @@ const DispatcherDashboard = () => {
         const res = await api.get('/dispatcher/pickups');
         const pickups = res.data.data || [];
         const pending = pickups.filter(p => p.status === 'pending');
-        
-        // If the number of pending pickups has increased, play the notification sound
-        if (!isInitialLoadRef.current && pending.length > prevPickupsRef.current.length) {
-          playNotification();
-        }
-        
-        isInitialLoadRef.current = false;
-        prevPickupsRef.current = pending;
-        
         setPendingPickups(pending);
+        
       } catch (e) {
         console.error('Failed to fetch notifications', e);
       }
