@@ -66,6 +66,14 @@ const AppShell = ({ navLinks, currentTitle, children, roleBadge, notifications =
           socket.emit('join_user', user._id);
         }
         
+        socket.on('connect', () => {
+          showToast('Real-time connection established', 'success');
+        });
+        
+        socket.on('connect_error', (err) => {
+          showToast(`Connection error: ${err.message}`, 'error');
+        });
+        
         socket.on('notification', (data) => {
           showToast(data.message || data.title || 'New Notification', 'info');
           if (data.type === 'pickup_request' || data.type === 'new_order') {
