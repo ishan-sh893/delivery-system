@@ -724,7 +724,7 @@ const DispatcherDashboard = () => {
     fetchNotifications();
     const interval = setInterval(fetchNotifications, 30000);
     return () => clearInterval(interval);
-  }, [playNotification]);
+  }, []);
 
   const notifications = pendingPickups.map(p => ({
     id: p._id,
