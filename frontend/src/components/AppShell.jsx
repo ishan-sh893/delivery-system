@@ -43,6 +43,9 @@ const AppShell = ({ navLinks, currentTitle, children, roleBadge, notifications =
         });
         
         socket.emit('join_role', user.role);
+        if (user._id) {
+          socket.emit('join_user', user._id);
+        }
         
         socket.on('notification', (data) => {
           // Trigger the corresponding sound based on event type

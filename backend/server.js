@@ -61,6 +61,10 @@ io.on('connection', (socket) => {
     socket.join(`role_${role}`);
   });
 
+  socket.on('join_user', (userId) => {
+    socket.join(`user_${userId}`);
+  });
+
   socket.on('disconnect', () => {
     if (process.env.NODE_ENV !== 'production') console.log(`[SOCKET] User disconnected: ${socket.id}`);
   });

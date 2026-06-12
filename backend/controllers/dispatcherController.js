@@ -54,6 +54,14 @@ export const assignRiderToPickup = async (req, res) => {
       await pkg.save();
     }
 
+    if (req.io) {
+      req.io.to(`user_${riderId}`).emit('notification', {
+        title: 'New Pickup Assigned',
+        message: `You have been assigned a new pickup request.`,
+        type: 'new_order'
+      });
+    }
+
     res.json({ success: true, data: pickup });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -116,6 +124,14 @@ export const assignRiderForDelivery = async (req, res) => {
     });
     await pkg.save();
 
+    if (req.io) {
+      req.io.to(`user_${riderId}`).emit('notification', {
+        title: 'Delivery Assigned',
+        message: `Package ${pkg.trackingCode} assigned to you for delivery.`,
+        type: 'new_order'
+      });
+    }
+
     res.json({ success: true, data: pkg });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -151,6 +167,14 @@ export const bulkAssignPackages = async (req, res) => {
       });
       await pkg.save();
       updated.push(pkg.trackingCode);
+    }
+
+    if (updated.length > 0 && req.io) {
+      req.io.to(`user_${riderId}`).emit('notification', {
+        title: 'Bulk Delivery Assigned',
+        message: `You have been assigned ${updated.length} new packages for delivery.`,
+        type: 'new_order'
+      });
     }
 
     res.json({ success: true, data: { count: updated.length, trackingCodes: updated } });
