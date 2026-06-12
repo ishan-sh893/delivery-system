@@ -39,10 +39,19 @@ const ALLOWED_ORIGINS = [
   ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
 ];
 
+const isOriginAllowed = (origin, callback) => {
+  if (!origin) return callback(null, true); // Allow non-browser clients (e.g. Postman)
+  if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+  if (origin.endsWith('.vercel.app')) return callback(null, true); // Allow Vercel preview deployments
+  
+  console.warn(`[CORS] Blocked request from origin: ${origin}`);
+  callback(new Error(`CORS policy: Origin "${origin}" is not allowed.`));
+};
+
 // ─── Socket.io Initialization ─────────────────────────────────────────────────
 const io = new Server(server, {
   cors: {
-    origin: ALLOWED_ORIGINS,
+    origin: isOriginAllowed,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   }
@@ -73,12 +82,7 @@ io.on('connection', (socket) => {
 
 // ─── CORS — first middleware, before any routes ───────────────────────────────
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
-    console.warn(`[CORS] Blocked request from origin: ${origin}`);
-    callback(new Error(`CORS policy: Origin "${origin}" is not allowed.`));
-  },
+  origin: isOriginAllowed,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
