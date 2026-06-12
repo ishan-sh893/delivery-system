@@ -120,6 +120,14 @@ export const createPickupRequest = async (req, res) => {
       results.push({ packageId: pkg._id, trackingCode: pkg.trackingCode, pickupId: pickup._id });
     }
 
+    if (results.length > 0 && req.io) {
+      req.io.to('role_dispatcher').to('role_admin').emit('notification', {
+        title: 'New Pickup Request',
+        message: `Vendor ${req.user.name} requested pickup for ${results.length} package(s).`,
+        type: 'pickup_request'
+      });
+    }
+
     res.status(201).json({ success: true, data: results });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -162,6 +170,14 @@ export const createPackage = async (req, res) => {
         user: req.user.name,
       }]
     });
+
+    if (req.io) {
+      req.io.to('role_admin').emit('notification', {
+        title: 'New Order Created',
+        message: `Vendor ${req.user.name} created order ${pkg.trackingCode}`,
+        type: 'new_order'
+      });
+    }
 
     res.status(201).json({ success: true, data: pkg });
   } catch (error) {

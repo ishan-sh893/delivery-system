@@ -2,6 +2,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
 import cors from 'cors';
 import compression from 'compression';
 import connectDB from './config/db.js';
@@ -26,8 +28,9 @@ if (missing.length > 0) {
 }
 
 const app = express();
+const server = http.createServer(app);
 
-// ─── CORS — first middleware, before any routes ───────────────────────────────
+// ─── CORS Origins ─────────────────────────────────────────────────────────────
 const ALLOWED_ORIGINS = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
@@ -35,9 +38,37 @@ const ALLOWED_ORIGINS = [
   ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
 ];
 
+// ─── Socket.io Initialization ─────────────────────────────────────────────────
+const io = new Server(server, {
+  cors: {
+    origin: ALLOWED_ORIGINS,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  }
+});
+
+// Attach io to req and global for use in controllers
+global.io = io;
+app.use((req, res, next) => {
+  req.io = io;
+  next();
+});
+
+io.on('connection', (socket) => {
+  if (process.env.NODE_ENV !== 'production') console.log(`[SOCKET] User connected: ${socket.id}`);
+  
+  socket.on('join_role', (role) => {
+    socket.join(`role_${role}`);
+  });
+
+  socket.on('disconnect', () => {
+    if (process.env.NODE_ENV !== 'production') console.log(`[SOCKET] User disconnected: ${socket.id}`);
+  });
+});
+
+// ─── CORS — first middleware, before any routes ───────────────────────────────
 const corsOptions = {
   origin: (origin, callback) => {
-    // Allow requests with no Origin header (Postman, curl, server-to-server)
     if (!origin) return callback(null, true);
     if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
     console.warn(`[CORS] Blocked request from origin: ${origin}`);
@@ -50,11 +81,9 @@ const corsOptions = {
   maxAge: 86400,
 };
 
-// Apply CORS globally and handle all preflight OPTIONS requests
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
-// ─── Compression (gzip) — reduces payload by ~70% for mobile clients ──────────
 app.use(compression());
 
 // ─── Body parsers ─────────────────────────────────────────────────────────────
@@ -118,7 +147,7 @@ const PORT = process.env.PORT || 5000;
 
 connectDB()
   .then(() => {
-    app.listen(PORT, '0.0.0.0', () => {
+    server.listen(PORT, '0.0.0.0', () => {
       console.log(`[SERVER] ✓ Running on port ${PORT}`);
       console.log(`[SERVER] Environment: ${process.env.NODE_ENV || 'development'}`);
       console.log(`[SERVER] Allowed origins: ${ALLOWED_ORIGINS.join(', ')}`);
