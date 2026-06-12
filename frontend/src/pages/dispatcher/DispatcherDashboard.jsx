@@ -5,6 +5,7 @@ import MetricCard from '../../components/MetricCard';
 import ScanStation from '../../components/ScanStation';
 import api from '../../api/axios';
 import { useToast } from '../../context/ToastContext';
+import useNotificationSound from '../../hooks/useNotificationSound';
 
 // ─── Nav + Title Map ──────────────────────────────────────────────────────
 const navLinks = [
@@ -706,6 +707,9 @@ const DispatcherDashboard = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [pendingPickups, setPendingPickups] = useState([]);
+  const { playNotification } = useNotificationSound();
+  const prevPickupsRef = useRef([]);
+  const isInitialLoadRef = useRef(true);
 
   useEffect(() => {
     const fetchNotifications = async () => {
@@ -713,6 +717,15 @@ const DispatcherDashboard = () => {
         const res = await api.get('/dispatcher/pickups');
         const pickups = res.data.data || [];
         const pending = pickups.filter(p => p.status === 'pending');
+        
+        // If the number of pending pickups has increased, play the notification sound
+        if (!isInitialLoadRef.current && pending.length > prevPickupsRef.current.length) {
+          playNotification();
+        }
+        
+        isInitialLoadRef.current = false;
+        prevPickupsRef.current = pending;
+        
         setPendingPickups(pending);
       } catch (e) {
         console.error('Failed to fetch notifications', e);
@@ -722,7 +735,7 @@ const DispatcherDashboard = () => {
     fetchNotifications();
     const interval = setInterval(fetchNotifications, 30000);
     return () => clearInterval(interval);
-  }, []);
+  }, [playNotification]);
 
   const notifications = pendingPickups.map(p => ({
     id: p._id,
