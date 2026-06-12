@@ -511,210 +511,191 @@ const PackageList = () => {
           <div style={{ background: '#fff', borderRadius: '16px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.35)', width: '100%', maxWidth: '680px', maxHeight: '90vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
             
             {/* Modal header */}
-            <div style={{ padding: '16px 24px', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0, background: '#f9fafb' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>
-                <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 600, color: '#111827' }}>New order</h3>
-                <span style={{ fontSize: '12px', background: '#dbeafe', color: '#3b82f6', border: 'none', borderRadius: '12px', padding: '2px 10px', fontWeight: 600 }}>COD</span>
+            <div style={{ padding: '24px 24px 16px', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexShrink: 0, background: '#fff' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                  <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 600, color: '#111827' }}>Create new order</h3>
+                </div>
+                <p style={{ margin: 0, fontSize: '13px', color: '#4b5563' }}>A unique 7-digit tracking code will be generated on save</p>
               </div>
-              <button style={{ padding: '6px', borderRadius: '8px', border: '1px solid #d1d5db', background: '#fff', cursor: 'pointer', color: '#6b7280', display: 'flex', alignItems: 'center', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }} onMouseEnter={e => e.currentTarget.style.background='#f3f4f6'} onMouseLeave={e => e.currentTarget.style.background='#fff'} onClick={() => setDrawerOpen(false)}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <button style={{ padding: '6px', borderRadius: '8px', border: '1px solid #d1d5db', background: '#fff', cursor: 'pointer', color: '#6b7280', display: 'flex', alignItems: 'center' }} onMouseEnter={e => e.currentTarget.style.background='#f3f4f6'} onMouseLeave={e => e.currentTarget.style.background='#fff'} onClick={() => setDrawerOpen(false)}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
               </button>
             </div>
 
             {/* Modal body / form */}
-            <div style={{ flex: 1, overflowY: 'auto', padding: '24px', background: '#fff' }}>
-              <form id="create-order-form" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <div style={{ flex: 1, overflowY: 'auto', padding: '24px 32px', background: '#f9f8f6' }}>
+              <form id="create-order-form" style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
                 
-                {/* 1. CUSTOMER INFORMATION */}
-                <div style={{ border: '1px solid #e5e7eb', borderRadius: '10px', overflow: 'hidden' }}>
-                  <div style={{ background: '#f5f5f4', padding: '12px 16px', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    <span style={{ fontSize: '13px', fontWeight: 600, color: '#4b5563', letterSpacing: '0.05em' }}>CUSTOMER INFORMATION</span>
+                {/* 1. RECIPIENT */}
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                    <span style={{ fontSize: '13px', fontWeight: 600, color: '#2563eb', letterSpacing: '0.05em' }}>RECIPIENT</span>
                   </div>
-                  <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px', background: '#fff' }}>
+                  <hr style={{ border: 'none', borderTop: '1px solid #e5e7eb', margin: '0 0 16px' }} />
+                  
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Customer name <span className="text-red-500">*</span></label>
-                      <input type="text" name="customerName" value={f.customerName} onChange={handleFormChange} className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-base placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all" />
+                      <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>Full name <span style={{ color: '#dc2626' }}>*</span></label>
+                      <input type="text" name="customerName" value={f.customerName} onChange={handleFormChange} style={{ width: '100%', borderRadius: '6px', border: '1px solid #d1d5db', padding: '10px 12px', fontSize: '15px', outline: 'none', background: '#fff' }} placeholder="Enter recipient's full name" />
                       {formErrors.customerName && <span className="text-xs text-red-500 mt-1 block">{formErrors.customerName}</span>}
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Contact Number <span className="text-red-500">*</span></label>
-                        <input type="tel" name="customerPhone" value={f.customerPhone} onChange={handleFormChange} className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-base placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all" />
+                        <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>Contact number <span style={{ color: '#dc2626' }}>*</span></label>
+                        <input type="tel" name="customerPhone" value={f.customerPhone} onChange={handleFormChange} style={{ width: '100%', borderRadius: '6px', border: '1px solid #d1d5db', padding: '10px 12px', fontSize: '15px', outline: 'none', background: '#fff' }} placeholder="98XXXXXXXX" />
                         {formErrors.customerPhone && <span className="text-xs text-red-500 mt-1 block">{formErrors.customerPhone}</span>}
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Receiver Address <span className="text-red-500">*</span></label>
-                        <input type="text" name="address" value={f.address} onChange={handleFormChange} className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-base placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all" />
-                        {formErrors.address && <span className="text-xs text-red-500 mt-1 block">{formErrors.address}</span>}
+                        <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>Alt. contact number</label>
+                        <input type="tel" name="altPhone" value={f.altPhone || ''} onChange={handleFormChange} style={{ width: '100%', borderRadius: '6px', border: '1px solid #d1d5db', padding: '10px 12px', fontSize: '15px', outline: 'none', background: '#fff' }} placeholder="98XXXXXXXX (optional)" />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* 2. BRANCH & DELIVERY */}
-                <div style={{ border: '1px solid #e5e7eb', borderRadius: '10px', overflow: 'hidden' }}>
-                  <div style={{ background: '#f5f5f4', padding: '12px 16px', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span style={{ fontSize: '13px', fontWeight: 600, color: '#4b5563', letterSpacing: '0.05em' }}>BRANCH & DELIVERY</span>
+                {/* 2. DELIVERY */}
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#92400e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                    <span style={{ fontSize: '13px', fontWeight: 600, color: '#92400e', letterSpacing: '0.05em' }}>DELIVERY</span>
                   </div>
-                  <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px', background: '#fff' }}>
+                  <hr style={{ border: 'none', borderTop: '1px solid #e5e7eb', margin: '0 0 16px' }} />
+                  
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">From branch <span className="text-red-500">*</span></label>
+                        <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>From branch <span style={{ color: '#dc2626' }}>*</span></label>
                         <div style={{ position: 'relative' }}>
-                          <select name="branch" value={f.branch} onChange={handleFormChange} className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-base focus:ring-2 focus:ring-blue-500 outline-none appearance-none bg-white" style={{ paddingRight: '32px' }}>
+                          <select name="branch" value={f.branch} onChange={handleFormChange} style={{ width: '100%', borderRadius: '6px', border: '1px solid #d1d5db', padding: '10px 12px', fontSize: '15px', outline: 'none', background: '#fff', appearance: 'none' }}>
+                            <option value="">Select branch</option>
                             {SIMPLE_BRANCHES.map(b => <option key={b} value={b}>{b}</option>)}
                           </select>
-                          <svg xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: '#9ca3af' }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: '#111827' }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
                         </div>
                         {formErrors.branch && <span className="text-xs text-red-500 mt-1 block">{formErrors.branch}</span>}
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">To branch <span className="text-red-500">*</span></label>
+                        <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>Destination branch <span style={{ color: '#dc2626' }}>*</span></label>
                         <div style={{ position: 'relative' }}>
-                          <select name="destinationBranch" value={f.destinationBranch} onChange={handleFormChange} className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-base focus:ring-2 focus:ring-blue-500 outline-none appearance-none bg-white" style={{ paddingRight: '32px' }}>
-                            <option value="--------">Select Destination</option>
+                          <select name="destinationBranch" value={f.destinationBranch} onChange={handleFormChange} style={{ width: '100%', borderRadius: '6px', border: '1px solid #d1d5db', padding: '10px 12px', fontSize: '15px', outline: 'none', background: '#fff', appearance: 'none' }}>
+                            <option value="--------">Select branch</option>
                             {SIMPLE_BRANCHES.map(b => <option key={b} value={b}>{b}</option>)}
                           </select>
-                          <svg xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: '#9ca3af' }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: '#111827' }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
                         </div>
                         {formErrors.destinationBranch && <span className="text-xs text-red-500 mt-1 block">{formErrors.destinationBranch}</span>}
                       </div>
                     </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>Receiver full address <span style={{ color: '#dc2626' }}>*</span></label>
+                      <input type="text" name="address" value={f.address} onChange={handleFormChange} style={{ width: '100%', borderRadius: '6px', border: '1px solid #d1d5db', padding: '10px 12px', fontSize: '15px', outline: 'none', background: '#fff' }} placeholder="Street, tole, landmark..." />
+                      {formErrors.address && <span className="text-xs text-red-500 mt-1 block">{formErrors.address}</span>}
+                    </div>
                     
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">City / Area</label>
-                        <SearchableDropdown name="city" value={f.city} onChange={handleFormChange} options={f.outOfValley ? OUT_OF_VALLEY_CITIES : KATHMANDU_VALLEY_AREAS} placeholder="Search Area..." />
+                        <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>City / area <span style={{ color: '#dc2626' }}>*</span></label>
+                        <input type="text" name="city" value={f.city} onChange={handleFormChange} style={{ width: '100%', borderRadius: '6px', border: '1px solid #d1d5db', padding: '10px 12px', fontSize: '15px', outline: 'none', background: '#fff' }} placeholder="City or area name" />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Delivery Date</label>
-                        <input type="date" name="deliveryDate" value={f.deliveryDate} onChange={handleFormChange} min={new Date().toISOString().split('T')[0]} className="w-full rounded-lg border border-gray-200 px-3 py-2 text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
+                        <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>Delivery date</label>
+                        <div style={{ position: 'relative' }}>
+                          <input type="date" name="deliveryDate" value={f.deliveryDate} onChange={handleFormChange} min={new Date().toISOString().split('T')[0]} style={{ width: '100%', borderRadius: '6px', border: '1px solid #d1d5db', padding: '10px 12px', fontSize: '15px', outline: 'none', background: '#fff', color: '#111827' }} />
+                        </div>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Pickup Type</label>
-                        <div style={{ position: 'relative' }}>
-                          <select name="pickupType" value={f.pickupType} onChange={handleFormChange} className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-base focus:ring-2 focus:ring-blue-500 outline-none appearance-none bg-white">
-                            <option value="Pickup">Pickup</option>
-                            <option value="Drop-off">Drop-off</option>
-                          </select>
-                          <svg xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: '#9ca3af' }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
-                        </div>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', paddingTop: '24px' }}>
-                        <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                          <input type="checkbox" name="outOfValley" checked={f.outOfValley} onChange={handleFormChange} style={{ width: '16px', height: '16px', accentColor: '#3b82f6', borderRadius: '4px' }} />
-                          <span style={{ fontSize: '14px', fontWeight: 500, color: '#374151', userSelect: 'none' }}>Out of Kathmandu Valley</span>
-                        </label>
-                      </div>
+                    <div>
+                      <label style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer', padding: '12px 14px', background: '#fff', border: '1px solid #d1d5db', borderRadius: '6px' }}>
+                        <input type="checkbox" name="outOfValley" checked={f.outOfValley} onChange={handleFormChange} style={{ width: '18px', height: '18px', accentColor: '#3b82f6', borderRadius: '4px', border: '1px solid #9ca3af' }} />
+                        <span style={{ fontSize: '15px', color: '#374151', userSelect: 'none' }}>Out of Kathmandu Valley</span>
+                      </label>
                     </div>
                   </div>
                 </div>
 
-                {/* 3. PRODUCT DETAILS */}
-                <div style={{ border: '1px solid #e5e7eb', borderRadius: '10px', overflow: 'hidden' }}>
-                  <div style={{ background: '#f5f5f4', padding: '12px 16px', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                    <span style={{ fontSize: '13px', fontWeight: 600, color: '#4b5563', letterSpacing: '0.05em' }}>PRODUCT DETAILS</span>
+                {/* 3. PACKAGE & FINANCIALS */}
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                    <span style={{ fontSize: '13px', fontWeight: 600, color: '#166534', letterSpacing: '0.05em' }}>PACKAGE & FINANCIALS</span>
                   </div>
-                  <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px', background: '#fff' }}>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Product details <span className="text-red-500">*</span></label>
-                      <input type="text" name="packageType" value={f.packageType} onChange={handleFormChange} className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-base placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all" placeholder="Describe the product..." />
-                      {formErrors.packageType && <span className="text-xs text-red-500 mt-1 block">{formErrors.packageType}</span>}
-                    </div>
+                  <hr style={{ border: 'none', borderTop: '1px solid #e5e7eb', margin: '0 0 16px' }} />
+                  
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Weight (kg) <span className="text-red-500">*</span></label>
-                        <input type="number" step="0.1" name="weight" value={f.weight} onChange={handleFormChange} className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
+                        <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>Weight (kg) <span style={{ color: '#dc2626' }}>*</span></label>
+                        <input type="number" step="0.1" name="weight" value={f.weight} onChange={handleFormChange} style={{ width: '100%', borderRadius: '6px', border: '1px solid #d1d5db', padding: '10px 12px', fontSize: '15px', outline: 'none', background: '#fff' }} placeholder="0.0" />
                         {formErrors.weight && <span className="text-xs text-red-500 mt-1 block">{formErrors.weight}</span>}
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Package Access</label>
-                        <div style={{ display: 'flex', background: '#f3f4f6', borderRadius: '8px', padding: '4px' }}>
-                          <button type="button" onClick={() => handleFormChange({target:{name:'packageAccess',value:'Sealed'}})} style={{ flex: 1, fontSize: '14px', fontWeight: 500, padding: '6px 4px', borderRadius: '6px', border: 'none', cursor: 'pointer', transition: 'all 0.15s', background: f.packageAccess === 'Sealed' ? '#fff' : 'transparent', color: f.packageAccess === 'Sealed' ? '#111827' : '#6b7280', boxShadow: f.packageAccess === 'Sealed' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none' }}>🔒 Sealed</button>
-                          <button type="button" onClick={() => handleFormChange({target:{name:'packageAccess',value:'Can Open'}})} style={{ flex: 1, fontSize: '14px', fontWeight: 500, padding: '6px 4px', borderRadius: '6px', border: 'none', cursor: 'pointer', transition: 'all 0.15s', background: f.packageAccess === 'Can Open' ? '#fff' : 'transparent', color: f.packageAccess === 'Can Open' ? '#111827' : '#6b7280', boxShadow: f.packageAccess === 'Can Open' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none' }}>📦 Open</button>
+                        <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>Package access <span style={{ color: '#dc2626' }}>*</span></label>
+                        <div style={{ display: 'flex', gap: '8px' }}>
+                          <button type="button" onClick={() => handleFormChange({target:{name:'packageAccess',value:'Sealed'}})} style={{ flex: 1, fontSize: '14px', fontWeight: 500, padding: '10px 4px', borderRadius: '6px', border: f.packageAccess === 'Sealed' ? '1px solid #93c5fd' : '1px solid #d1d5db', cursor: 'pointer', transition: 'all 0.15s', background: f.packageAccess === 'Sealed' ? '#dbeafe' : '#fff', color: f.packageAccess === 'Sealed' ? '#1e40af' : '#4b5563' }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ display: 'inline-block', marginRight: '6px', verticalAlign: '-2px' }}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            Sealed
+                          </button>
+                          <button type="button" onClick={() => handleFormChange({target:{name:'packageAccess',value:'Can Open'}})} style={{ flex: 1, fontSize: '14px', fontWeight: 500, padding: '10px 4px', borderRadius: '6px', border: f.packageAccess === 'Can Open' ? '1px solid #93c5fd' : '1px solid #d1d5db', cursor: 'pointer', transition: 'all 0.15s', background: f.packageAccess === 'Can Open' ? '#dbeafe' : '#fff', color: f.packageAccess === 'Can Open' ? '#1e40af' : '#4b5563' }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ display: 'inline-block', marginRight: '6px', verticalAlign: '-2px' }}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+                            Open
+                          </button>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
 
-                {/* 4. PRICING & COD */}
-                <div style={{ border: '1px solid #e5e7eb', borderRadius: '10px', overflow: 'hidden' }}>
-                  <div style={{ background: '#f5f5f4', padding: '12px 16px', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-                    <span style={{ fontSize: '13px', fontWeight: 600, color: '#4b5563', letterSpacing: '0.05em' }}>PRICING & COD</span>
-                  </div>
-                  <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px', background: '#fff' }}>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Product price (Rs.) <span className="text-red-500">*</span></label>
-                      <input type="number" name="amount" value={f.amount} onChange={handleFormChange} className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
-                      {formErrors.amount && <span className="text-xs text-red-500 mt-1 block">{formErrors.amount}</span>}
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                        Delivery charges (Rs.)
-                        <span style={{ fontSize: '10px', background: '#fef3c7', color: '#92400e', border: 'none', borderRadius: 4, padding: '2px 6px', fontWeight: 600 }}>Admin rate</span>
-                      </label>
-                      <div style={{
-                        position: 'relative',
-                        borderRadius: 8,
-                        border: chargeError
-                          ? '1px solid #ef4444'
-                          : fetchedCharge !== null
-                          ? '1px solid #10b981'
-                          : '1px solid #e5e7eb',
-                        background: chargeError
-                          ? '#fef2f2'
-                          : fetchedCharge !== null
-                          ? '#f0fdf4'
-                          : '#fff',
-                        padding: '10px 14px',
-                        minHeight: 44,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        gap: 8,
-                      }}>
-                        {chargeLoading ? (
-                          <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#6b7280', fontSize: 14 }}>
-                            <svg style={{ animation: 'spin 1s linear infinite' }} xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            Fetching rate...
-                          </span>
-                        ) : chargeError ? (
-                          <span style={{ color: '#b91c1c', fontSize: 14, fontWeight: 500 }}>{chargeError}</span>
-                        ) : fetchedCharge !== null ? (
-                          <span style={{ fontWeight: 600, fontSize: 15, color: fetchedCharge === 0 ? '#10b981' : '#1f2937' }}>
-                            {fetchedCharge === 0 ? 'Free delivery' : fetchedCharge.toFixed(2)}
-                          </span>
-                        ) : (
-                          <span style={{ color: '#9ca3af', fontSize: 14 }}>
-                            {(!f.branch || !f.destinationBranch || f.destinationBranch === '--------')
-                              ? 'Select both branches'
-                              : 'Enter weight to calculate'}
-                          </span>
-                        )}
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>Product price (Rs.) <span style={{ color: '#dc2626' }}>*</span></label>
+                        <input type="number" name="amount" value={f.amount} onChange={handleFormChange} style={{ width: '100%', borderRadius: '6px', border: '1px solid #d1d5db', padding: '10px 12px', fontSize: '15px', outline: 'none', background: '#fff' }} />
+                        {formErrors.amount && <span className="text-xs text-red-500 mt-1 block">{formErrors.amount}</span>}
                       </div>
-                      {formErrors.deliveryCharge && <span className="text-xs text-red-500 mt-1 block">{formErrors.deliveryCharge}</span>}
+                      <div>
+                        <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>
+                          Delivery charges (Rs.)
+                        </label>
+                        <div style={{
+                          position: 'relative',
+                          borderRadius: 6,
+                          border: chargeError ? '1px solid #ef4444' : fetchedCharge !== null ? '1px solid #10b981' : '1px solid #d1d5db',
+                          background: chargeError ? '#fef2f2' : fetchedCharge !== null ? '#f0fdf4' : '#fff',
+                          padding: '10px 12px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                        }}>
+                          {chargeLoading ? (
+                            <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#6b7280', fontSize: 15 }}>
+                              <svg style={{ animation: 'spin 1s linear infinite' }} xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                              Fetching rate...
+                            </span>
+                          ) : chargeError ? (
+                            <span style={{ color: '#b91c1c', fontSize: 14, fontWeight: 500 }}>{chargeError}</span>
+                          ) : fetchedCharge !== null ? (
+                            <span style={{ fontWeight: 600, fontSize: 15, color: fetchedCharge === 0 ? '#10b981' : '#1f2937' }}>
+                              {fetchedCharge === 0 ? 'Free delivery' : fetchedCharge.toFixed(2)}
+                            </span>
+                          ) : (
+                            <span style={{ color: '#9ca3af', fontSize: 14 }}>Select branch / weight</span>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                {/* 5. SPECIAL NOTE */}
-                <div style={{ border: '1px solid #e5e7eb', borderRadius: '10px', overflow: 'hidden' }}>
-                  <div style={{ background: '#f5f5f4', padding: '12px 16px', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                    <span style={{ fontSize: '13px', fontWeight: 600, color: '#4b5563', letterSpacing: '0.05em' }}>SPECIAL NOTE</span>
-                  </div>
-                  <div style={{ padding: '16px', background: '#fff' }}>
-                    <textarea name="comments" value={f.comments} onChange={handleFormChange} className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-y" rows="2" placeholder="Any special instructions..."></textarea>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>Product details <span style={{ color: '#dc2626' }}>*</span></label>
+                      <input type="text" name="packageType" value={f.packageType} onChange={handleFormChange} style={{ width: '100%', borderRadius: '6px', border: '1px solid #d1d5db', padding: '10px 12px', fontSize: '15px', outline: 'none', background: '#fff' }} placeholder="Describe the product..." />
+                      {formErrors.packageType && <span className="text-xs text-red-500 mt-1 block">{formErrors.packageType}</span>}
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111827', marginBottom: '4px' }}>Remarks / Special instructions</label>
+                      <textarea name="comments" value={f.comments} onChange={handleFormChange} style={{ width: '100%', borderRadius: '6px', border: '1px solid #d1d5db', padding: '10px 12px', fontSize: '15px', outline: 'none', background: '#fff', resize: 'vertical', minHeight: '60px' }} placeholder="Any special instructions..."></textarea>
+                    </div>
                   </div>
                 </div>
 
@@ -722,15 +703,21 @@ const PackageList = () => {
             </div>
 
             {/* Modal footer */}
-            <div style={{ padding: '16px 24px', borderTop: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flexShrink: 0, background: '#f9fafb', gap: '12px' }}>
-              <button type="button" style={{ padding: '8px 20px', fontSize: '14px', fontWeight: 500, color: '#374151', background: '#fff', border: '1px solid #d1d5db', borderRadius: '8px', cursor: 'pointer', transition: 'all 0.15s' }} onMouseEnter={e => e.currentTarget.style.background='#f3f4f6'} onMouseLeave={e => e.currentTarget.style.background='#fff'} onClick={() => setDrawerOpen(false)}>Cancel</button>
-              <button type="button" onClick={(e) => handleCreateSubmit(e, false)} style={{ padding: '8px 24px', fontSize: '14px', fontWeight: 600, color: '#111827', background: '#fff', border: '1px solid #d1d5db', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', opacity: createLoading ? 0.8 : 1, transition: 'all 0.15s' }} onMouseEnter={e => e.currentTarget.style.background='#f9fafb'} onMouseLeave={e => e.currentTarget.style.background='#fff'} disabled={createLoading}>
+            <div style={{ padding: '16px 24px', borderTop: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0, background: '#f4f1eb', gap: '12px' }}>
+              <button type="button" style={{ flex: 1, padding: '12px', fontSize: '14px', fontWeight: 500, color: '#374151', background: '#f6f5f3', border: '1px solid #d1d5db', borderRadius: '8px', cursor: 'pointer', transition: 'all 0.15s' }} onMouseEnter={e => e.currentTarget.style.background='#e5e7eb'} onMouseLeave={e => e.currentTarget.style.background='#f6f5f3'} onClick={() => setDrawerOpen(false)}>
+                Cancel
+              </button>
+              <button type="button" onClick={(e) => handleCreateSubmit(e, true)} style={{ flex: 1, padding: '12px', fontSize: '14px', fontWeight: 500, color: '#111827', background: '#f6f5f3', border: '1px solid #d1d5db', borderRadius: '8px', cursor: 'pointer', transition: 'all 0.15s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', opacity: createLoading ? 0.5 : 1 }} disabled={createLoading} onMouseEnter={e => e.currentTarget.style.background='#e5e7eb'} onMouseLeave={e => e.currentTarget.style.background='#f6f5f3'}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                Add & create another
+              </button>
+              <button type="button" onClick={(e) => handleCreateSubmit(e, false)} style={{ flex: 1.5, padding: '12px', fontSize: '14px', fontWeight: 600, color: '#111827', background: '#f6f5f3', border: '1px solid #9ca3af', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', opacity: createLoading ? 0.8 : 1, transition: 'all 0.15s' }} disabled={createLoading} onMouseEnter={e => e.currentTarget.style.background='#e5e7eb'} onMouseLeave={e => e.currentTarget.style.background='#f6f5f3'}>
                 {createLoading ? (
                   <><svg className="animate-spin h-4 w-4 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Creating...</>
                 ) : (
                   <>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
-                    Create order
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                    Create order & get tracking code
                   </>
                 )}
               </button>
