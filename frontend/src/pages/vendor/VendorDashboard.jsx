@@ -46,7 +46,7 @@ const VendorHome = () => {
 
   return (
     <>
-      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:20}}>
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:20,flexWrap:'wrap',gap:12}}>
         <div><h2 style={{fontSize:'var(--font-size-xl)',marginBottom:4}}>Welcome back 👋</h2><p style={{color:'var(--text-muted)',fontSize:'var(--font-size-sm)'}}>Here's your delivery overview</p></div>
         <button className="btn btn-primary" onClick={() => navigate('/vendor/packages/new')}>+ New Order</button>
       </div>

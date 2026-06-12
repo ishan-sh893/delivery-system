@@ -3,6 +3,7 @@ dotenv.config();
 
 import express from 'express';
 import cors from 'cors';
+import compression from 'compression';
 import connectDB from './config/db.js';
 
 // Route imports
@@ -52,6 +53,9 @@ const corsOptions = {
 // Apply CORS globally and handle all preflight OPTIONS requests
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
+
+// ─── Compression (gzip) — reduces payload by ~70% for mobile clients ──────────
+app.use(compression());
 
 // ─── Body parsers ─────────────────────────────────────────────────────────────
 app.use(express.json({ limit: '10mb' }));

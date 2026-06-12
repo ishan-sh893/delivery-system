@@ -312,9 +312,9 @@ const AdminScanHistory = () => {
       <div className="card p-0">
         <div className="card-header border-b" style={{ padding: 20, display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'space-between', alignItems: 'center' }}>
           <div className="header-title-group"><h3>Global Scan History</h3><p>Audit log of all package scans and status changes</p></div>
-          <div style={{ display: 'flex', gap: 10 }}>
-            <input type="text" className="form-control" placeholder="Filter by Tracking Code" value={filter.trackingCode} onChange={e => setFilter({ ...filter, trackingCode: e.target.value })} onKeyDown={e => e.key === 'Enter' && fetchHistory()} style={{ width: 200 }} />
-            <select className="form-select" value={filter.role} onChange={e => setFilter({ ...filter, role: e.target.value })}>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            <input type="text" className="form-control" placeholder="Filter by Tracking Code" value={filter.trackingCode} onChange={e => setFilter({ ...filter, trackingCode: e.target.value })} onKeyDown={e => e.key === 'Enter' && fetchHistory()} style={{ flex: '1 1 160px', minWidth: 0 }} />
+            <select className="form-select" value={filter.role} onChange={e => setFilter({ ...filter, role: e.target.value })} style={{ flex: '1 1 140px' }}>
               <option value="">All Roles</option>
               <option value="dispatcher">Warehouse Staff</option>
               <option value="rider">Rider</option>
