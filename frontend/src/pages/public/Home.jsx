@@ -7,12 +7,12 @@ const PublicNav = ({ active }) => (
     borderBottom: '1px solid var(--border-color)', position: 'sticky', top: 0, zIndex: 200,
     boxShadow: 'var(--shadow-sm)'
   }}>
-    <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row-reverse' }}>
       <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--color-primary)' }}>
           <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
         </svg>
-        <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.35rem', background: 'linear-gradient(135deg, var(--color-primary) 0%, #6366f1 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>exdexpress</span>
+        <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.35rem', background: 'linear-gradient(135deg, var(--color-primary) 0%, #6366f1 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>ktmexpress</span>
       </Link>
       <nav style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         {[
@@ -36,11 +36,11 @@ const PublicNav = ({ active }) => (
 const PublicFooter = () => (
   <footer style={{ background: '#0f172a', color: '#94a3b8', padding: '32px 24px', textAlign: 'center' }}>
     <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 16 }}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-        <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, color: '#f1f5f9' }}>exdexpress Logistics</span>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 16 }}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 600, fontSize: '0.9rem', color: '#f1f5f9' }}>ktmexpress Logistics</span>
       </div>
-      <p style={{ fontSize: 'var(--font-size-sm)' }}>© {new Date().getFullYear()} exdexpress Logistics SaaS. All rights reserved.</p>
+      <p style={{ fontSize: 'var(--font-size-sm)' }}>© {new Date().getFullYear()} ktmexpress Logistics SaaS. All rights reserved.</p>
     </div>
   </footer>
 );
@@ -141,7 +141,7 @@ const Home = () => {
       {/* CTA */}
       <section style={{ background: 'linear-gradient(135deg, var(--color-primary) 0%, #4f46e5 100%)', padding: '60px 24px', textAlign: 'center' }}>
         <h2 style={{ color: '#fff', fontFamily: 'var(--font-heading)', fontSize: 'var(--font-size-2xl)', fontWeight: 700, marginBottom: 12 }}>Ready to scale your deliveries?</h2>
-        <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: 28, fontSize: 'var(--font-size-base)' }}>Join 150+ vendors already using exdexpress to power their last-mile operations.</p>
+        <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: 28, fontSize: 'var(--font-size-base)' }}>Join 150+ vendors already using ktmexpress to power their last-mile operations.</p>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link to="/login" className="btn" style={{ background: '#fff', color: 'var(--color-primary)', fontWeight: 700 }}>Get Started Free</Link>
           <Link to="/contact" className="btn btn-outline" style={{ borderColor: 'rgba(255,255,255,0.5)', color: '#fff' }}>Talk to Sales</Link>

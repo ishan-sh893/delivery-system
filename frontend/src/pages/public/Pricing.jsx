@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const PublicNav = ({ active }) => (
   <header style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--border-color)', position: 'sticky', top: 0, zIndex: 200, boxShadow: 'var(--shadow-sm)' }}>
-    <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row-reverse' }}>
       <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--color-primary)' }}><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-        <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.35rem', background: 'linear-gradient(135deg, var(--color-primary) 0%, #6366f1 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>exdexpress</span>
+        <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.35rem', background: 'linear-gradient(135deg, var(--color-primary) 0%, #6366f1 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>ktmexpress</span>
       </Link>
       <nav style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         {[{ label: 'Pricing', path: '/pricing' }, { label: 'Contact', path: '/contact' }].map(({ label, path }) => (
@@ -84,24 +84,76 @@ const Pricing = () => (
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24, alignItems: 'start' }}>
           {plans.map(p => (
-            <div key={p.name} className="card" style={{ position: 'relative', border: p.highlight ? `2px solid ${p.color}` : undefined, transform: p.highlight ? 'scale(1.02)' : undefined, boxShadow: p.highlight ? 'var(--shadow-xl)' : undefined }}>
+            <div 
+              key={p.name} 
+              className="card pricing-card" 
+              style={{ 
+                position: 'relative', 
+                border: p.highlight ? `2px solid ${p.color}` : '1px solid var(--border-color)', 
+                transform: p.highlight ? 'scale(1.04)' : 'scale(1)', 
+                boxShadow: p.highlight ? '0 20px 40px rgba(99, 102, 241, 0.15)' : '0 4px 6px rgba(0,0,0,0.02)', 
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                background: p.highlight ? 'linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)' : '#ffffff',
+                zIndex: p.highlight ? 10 : 1,
+                padding: '40px 32px',
+                borderRadius: '16px'
+              }}
+              onMouseEnter={(e) => {
+                if(!p.highlight) e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.boxShadow = p.highlight ? '0 24px 48px rgba(99, 102, 241, 0.2)' : '0 12px 24px rgba(0,0,0,0.06)';
+              }}
+              onMouseLeave={(e) => {
+                if(!p.highlight) e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = p.highlight ? '0 20px 40px rgba(99, 102, 241, 0.15)' : '0 4px 6px rgba(0,0,0,0.02)';
+              }}
+            >
               {p.badge && (
-                <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: p.color, color: '#fff', borderRadius: 'var(--radius-full)', padding: '4px 16px', fontSize: 'var(--font-size-xs)', fontWeight: 700, whiteSpace: 'nowrap' }}>{p.badge}</div>
+                <div style={{ position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)', background: `linear-gradient(135deg, ${p.color} 0%, #4f46e5 100%)`, color: '#fff', borderRadius: 'var(--radius-full)', padding: '6px 20px', fontSize: '13px', fontWeight: 800, whiteSpace: 'nowrap', letterSpacing: '0.05em', boxShadow: `0 4px 12px ${p.color}40` }}>{p.badge}</div>
               )}
-              <div style={{ marginBottom: 24 }}>
-                <h3 style={{ fontSize: 'var(--font-size-lg)', color: p.color, marginBottom: 8 }}>{p.name}</h3>
-                <div style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--font-size-2xl)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 4 }}>{p.price}</div>
-                <p style={{ fontSize: 'var(--font-size-xs)', color: 'var(--text-muted)' }}>{p.sub}</p>
+              <div style={{ marginBottom: 32, textAlign: 'center' }}>
+                <h3 style={{ fontSize: '1.25rem', color: p.color, marginBottom: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{p.name}</h3>
+                <div style={{ fontFamily: 'var(--font-heading)', fontSize: '2.5rem', fontWeight: 800, color: '#0f172a', marginBottom: 8 }}>{p.price}</div>
+                <p style={{ fontSize: '0.9rem', color: '#64748b', fontWeight: 500 }}>{p.sub}</p>
               </div>
-              <ul style={{ listStyle: 'none', padding: 0, marginBottom: 28, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <ul style={{ listStyle: 'none', padding: 0, marginBottom: 36, display: 'flex', flexDirection: 'column', gap: 16 }}>
                 {p.features.map(f => (
-                  <li key={f} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)' }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: p.color, flexShrink: 0 }}><polyline points="20 6 9 17 4 12"/></svg>
+                  <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: '0.95rem', color: '#334155', fontWeight: 500, lineHeight: 1.4 }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ color: p.color, flexShrink: 0, marginTop: 1 }}><polyline points="20 6 9 17 4 12"/></svg>
                     {f}
                   </li>
                 ))}
               </ul>
-              <Link to={p.name === 'Enterprise' ? '/contact' : '/login'} className="btn btn-block" style={{ background: p.highlight ? p.color : undefined, color: p.highlight ? '#fff' : undefined, borderColor: !p.highlight ? p.color : undefined, justifyContent: 'center' }}>
+              <Link to={p.name === 'Enterprise' ? '/contact' : '/login'} className="btn btn-block" style={{ 
+                background: p.highlight ? `linear-gradient(135deg, ${p.color} 0%, #4f46e5 100%)` : 'transparent', 
+                color: p.highlight ? '#fff' : p.color, 
+                borderColor: p.color, 
+                borderWidth: '2px',
+                borderStyle: 'solid',
+                justifyContent: 'center',
+                padding: '12px 0',
+                fontSize: '1rem',
+                fontWeight: 700,
+                borderRadius: '8px',
+                boxShadow: p.highlight ? `0 8px 16px ${p.color}40` : 'none',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                if(!p.highlight) {
+                  e.currentTarget.style.background = `${p.color}10`;
+                } else {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = `0 12px 20px ${p.color}60`;
+                }
+              }}
+              onMouseLeave={(e) => {
+                if(!p.highlight) {
+                  e.currentTarget.style.background = 'transparent';
+                } else {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = `0 8px 16px ${p.color}40`;
+                }
+              }}
+              >
                 {p.cta}
               </Link>
             </div>
@@ -117,7 +169,7 @@ const Pricing = () => (
     </main>
 
     <footer style={{ background: '#0f172a', color: '#94a3b8', padding: '24px', textAlign: 'center', fontSize: 'var(--font-size-sm)' }}>
-      <p>© {new Date().getFullYear()} exdexpress Logistics. All rights reserved.</p>
+      <p>© {new Date().getFullYear()} ktmexpress Logistics. All rights reserved.</p>
     </footer>
   </div>
 );

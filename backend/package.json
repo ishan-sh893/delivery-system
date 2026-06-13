@@ -1,8 +1,8 @@
 {
-  "name": "exdexpress-backend",
+  "name": "ktmexpress-backend",
   "type": "module",
   "version": "1.0.0",
-  "description": "exdexpress Logistics Delivery Management System - Backend API",
+  "description": "ktmexpress Logistics Delivery Management System - Backend API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

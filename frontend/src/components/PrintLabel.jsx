@@ -12,7 +12,7 @@ import { createPortal } from 'react-dom';
  *   <button onClick={() => { printRef.current.print(); }}>Print</button>
  */
 
-const COMPANY_NAME = 'exdexpress';
+const COMPANY_NAME = 'ktmexpress';
 const COMPANY_TAGLINE = 'Swift. Safe. Delivered.';
 
 const statusColor = (status) => {

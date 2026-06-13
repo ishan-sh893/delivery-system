@@ -137,7 +137,7 @@ const AppShell = ({ navLinks, currentTitle, children, roleBadge, notifications =
               <line x1="12" y1="22.08" x2="12" y2="12"/>
             </svg>
             <div>
-              <h1>exdexpress</h1>
+              <h1>ktmexpress</h1>
               <span>{roleBadge || 'Workspace'}</span>
             </div>
           </div>

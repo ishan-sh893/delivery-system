@@ -19,34 +19,34 @@ async function seed() {
 
   // Create users
   const admin = await User.create({
-    name: 'Super Administrator', email: 'admin@exdexpress.com', password: 'admin123',
+    name: 'Super Administrator', email: 'admin@ktmexpress.com', password: 'admin123',
     role: 'admin', contact: '+977-9801234567',
   });
 
   const bella = await User.create({
-    name: 'Bella Cosmetics', email: 'bella@exdexpress.com', password: 'vendor123',
+    name: 'Bella Cosmetics', email: 'bella@ktmexpress.com', password: 'vendor123',
     role: 'vendor', contact: '+977-9851122334',
     vendorMeta: { shopName: 'Bella Cosmetics', defaultKtmRate: 120, defaultOutsideRate: 180, weightSurcharge: 40 },
   });
 
   const urban = await User.create({
-    name: 'Urban Threads', email: 'urban@exdexpress.com', password: 'vendor123',
+    name: 'Urban Threads', email: 'urban@ktmexpress.com', password: 'vendor123',
     role: 'vendor', contact: '+977-9841122334',
     vendorMeta: { shopName: 'Urban Threads', defaultKtmRate: 150, defaultOutsideRate: 220, weightSurcharge: 50 },
   });
 
   const dispatcher = await User.create({
-    name: 'Central Hub Dispatcher', email: 'dispatcher@exdexpress.com', password: 'dispatch123',
+    name: 'Central Hub Dispatcher', email: 'dispatcher@ktmexpress.com', password: 'dispatch123',
     role: 'dispatcher', contact: '+977-9811223344',
   });
 
   const ram = await User.create({
-    name: 'Ram Bahadur', email: 'ram@exdexpress.com', password: 'rider123',
+    name: 'Ram Bahadur', email: 'ram@ktmexpress.com', password: 'rider123',
     role: 'rider', contact: '+977-9808877665',
   });
 
   const shyam = await User.create({
-    name: 'Shyam Thapa', email: 'shyam@exdexpress.com', password: 'rider123',
+    name: 'Shyam Thapa', email: 'shyam@ktmexpress.com', password: 'rider123',
     role: 'rider', contact: '+977-9818877665',
   });
 
@@ -110,12 +110,12 @@ async function seed() {
 
   console.log('[SEED] Packages created.');
   console.log('[SEED] ✅ Seed complete! Credentials:');
-  console.log('  Admin:      admin@exdexpress.com / admin123');
-  console.log('  Bella:      bella@exdexpress.com / vendor123');
-  console.log('  Urban:      urban@exdexpress.com / vendor123');
-  console.log('  Dispatcher: dispatcher@exdexpress.com / dispatch123');
-  console.log('  Ram:        ram@exdexpress.com / rider123');
-  console.log('  Shyam:      shyam@exdexpress.com / rider123');
+  console.log('  Admin:      admin@ktmexpress.com / admin123');
+  console.log('  Bella:      bella@ktmexpress.com / vendor123');
+  console.log('  Urban:      urban@ktmexpress.com / vendor123');
+  console.log('  Dispatcher: dispatcher@ktmexpress.com / dispatch123');
+  console.log('  Ram:        ram@ktmexpress.com / rider123');
+  console.log('  Shyam:      shyam@ktmexpress.com / rider123');
 
   await mongoose.disconnect();
   process.exit(0);

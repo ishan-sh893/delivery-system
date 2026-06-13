@@ -41,7 +41,7 @@ const Login = () => {
               <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
               <line x1="12" y1="22.08" x2="12" y2="12"/>
             </svg>
-            <span>exdexpress</span>
+            <span>ktmexpress</span>
           </div>
           <h1>Welcome Back</h1>
           <p>Sign in to your logistics workspace</p>
@@ -58,7 +58,7 @@ const Login = () => {
               id="login-email"
               type="email"
               className="form-control"
-              placeholder="admin@exdexpress.com"
+              placeholder="admin@ktmexpress.com"
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
@@ -115,7 +115,7 @@ const Login = () => {
         </form>
 
         <div className="login-footer">
-          <p>exdexpress Logistics SaaS Platform &bull; v2.0</p>
+          <p>ktmexpress Logistics SaaS Platform &bull; v2.0</p>
         </div>
       </div>
 
